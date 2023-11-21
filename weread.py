@@ -214,9 +214,9 @@ def insert_to_notion(bookName, bookId, cover, sort, author,isbn,rating,categorie
         "Rating": {"number": rating},
         "Cover": {"files": [{"type": "external", "name": "Cover", "external": {"url": cover}}]},
     }
-    if(categories!=None):
-        multi_select = [{"name": x} for x in categories]
-        properties["Categories"] = {"multi_select":multi_select}
+    # if(categories!=None):
+    #     multi_select = [{"name": x} for x in categories]
+    #     properties["Categories"] = {"multi_select":multi_select}
     read_info = get_read_info(bookId=bookId)
     if read_info != None:
         markedStatus = read_info.get("markedStatus", 0)
@@ -419,9 +419,8 @@ if __name__ == "__main__":
             bookId = book.get("bookId")
             author = book.get("author")
             categories = book.get("categories")
-            if(categories!=None):
-                categories = [x["title"] for x in categories]
-                print(categories)
+            # if(categories!=None):
+            #     categories = [x["title"] for x in categories]
             print(f"正在同步 {title} ,一共{len(books)}本，当前是第{i}本。")
             check(bookId)
             isbn,rating = get_bookinfo(bookId)
