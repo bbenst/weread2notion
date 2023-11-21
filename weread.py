@@ -421,6 +421,7 @@ if __name__ == "__main__":
             categories = book.get("categories")
             if(categories!=None):
                 categories = [x["title"] for x in categories]
+                print(categories)
             print(f"正在同步 {title} ,一共{len(books)}本，当前是第{i}本。")
             check(bookId)
             isbn,rating = get_bookinfo(bookId)
